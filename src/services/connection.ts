@@ -13,23 +13,23 @@ import { getRewardTokenAddress } from '../utils/wallet'
  */
 export class ConnectionService {
   public connection: Connection
-  public pixelsTokenPubkey: PublicKey
+  public platformTokenPubkey: PublicKey
   constructor() {
     this.connection = new Connection(
       process.env.REACT_APP_NODE_ENV === 'development'
         ? clusterApiUrl('devnet')
         : (process.env.REACT_APP_CUSTOM_RPC_LINK as string)
     )
-    this.pixelsTokenPubkey = new PublicKey(getRewardTokenAddress())
+    this.platformTokenPubkey = new PublicKey(getRewardTokenAddress())
   }
 
-  public async getPixelsTokenBalance(pubkey: string): Promise<string> {
+  public async getPlatformTokenBalance(pubkey: string): Promise<string> {
     const res: RpcResponseAndContext<
       Array<{
         pubkey: PublicKey
         account: AccountInfo<ParsedAccountData>
       }>
-    > = await this.connection.getParsedTokenAccountsByOwner(new PublicKey(pubkey), { mint: this.pixelsTokenPubkey })
+    > = await this.connection.getParsedTokenAccountsByOwner(new PublicKey(pubkey), { mint: this.platformTokenPubkey })
     return res.value[0] ? res.value[0].account.data.parsed.info.tokenAmount.uiAmount : '0'
   }
 

@@ -17,7 +17,7 @@ export const stakedNFTLoadingSelector = (state: RootState): boolean => state.wal
 
 export const stakedNFTinPoolSelector = (state: RootState): number => state.wallet.stakedNFTinPool
 
-export const pixelsTokenAmountSelector = (state: RootState): string => state.wallet.pixelTokenAmount
+export const platformTokenAmountSelector = (state: RootState): string => state.wallet.pixelTokenAmount
 
 export const stakedNFTDetailSelector = (state: RootState): NFTWithStakeData => state.wallet.nftDetail
 

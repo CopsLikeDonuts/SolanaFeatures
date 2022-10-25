@@ -67,7 +67,7 @@ export function* getPixelTokenAmount(): Generator<
   try {
     const pubkey: string = yield select(publicKeySelector)
 
-    const pixlBalance: string = yield connectionService.getPixelsTokenBalance(pubkey)
+    const pixlBalance: string = yield connectionService.getPlatformTokenBalance(pubkey)
 
     yield put(getPixelTokenAmountSuccess(pixlBalance))
   } catch ({ message }) {

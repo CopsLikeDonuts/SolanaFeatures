@@ -17,7 +17,7 @@ import { publicKeySelector } from 'store/selectors/wallet'
 const { ROUTE_STAKED_NFT_LIST, ROUTE_NFT_DETAIL, ROUTE_STAKE_NFT, ROUTE_PRIVACY_POLICY, ROUTE_TERMS_OF_SERVICE } =
   appRoutes
 
-const pixelsRoutes: IAppRouterProps[] = [
+const platformRoutes: IAppRouterProps[] = [
   {
     path: ROUTE_STAKED_NFT_LIST,
     element: <AuthRoute component={<NFTList/>} />,
@@ -55,7 +55,7 @@ export default function AppNavigation(): React.ReactElement | null {
     }, 3600000)
   }, [publicKey, dispatch])
 
-  const routes = [...pixelsRoutes, { path: '*', element: <Navigate to={ROUTE_STAKED_NFT_LIST} replace /> }]
+  const routes = [...platformRoutes, { path: '*', element: <Navigate to={ROUTE_STAKED_NFT_LIST} replace /> }]
 
   return useRoutes(routes)
 }
